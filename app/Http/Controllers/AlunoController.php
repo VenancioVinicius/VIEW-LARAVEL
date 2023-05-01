@@ -13,7 +13,7 @@ class AlunoController extends Controller
      */
 
     public $alunos = [[
-        "id" => '1',
+        "id" => 1,
         "nome" => "Vinicius",
         "email" => "vinicius@email.com"
     ]];
@@ -31,7 +31,10 @@ class AlunoController extends Controller
 
     public function index(){
         $alunos = session('alunos');
-        return view('alunos.index', compact('alunos'));
+
+        $escola = " Paranaguá";
+
+        return view('alunos.index', compact(['alunos', 'escola']));
     }
 
     /**
@@ -87,9 +90,9 @@ class AlunoController extends Controller
 
         $indice = array_search($id, array_column($aux, 'id'));
 
-        $aluno = $aux[$indice];
+        $alunos = $aux[$indice];
 
-        return view('alunos.show', compact('aluno'));
+        return view('alunos.show', compact('alunos'));
     }
 
     /**
@@ -104,9 +107,9 @@ class AlunoController extends Controller
 
         $indice = array_search($id, array_column($aux, 'id'));
 
-        $aluno = $aux[$indice];
+        $alunos = $aux[$indice];
 
-        return view('alunos.edit', compact('aluno'));
+        return view('alunos.edit', compact('alunos'));
     }
 
     /**
